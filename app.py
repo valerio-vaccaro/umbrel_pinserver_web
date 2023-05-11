@@ -4,6 +4,7 @@ import cbor
 from flask import Flask
 from flask import render_template
 from flask import send_file
+from flask import send_from_directory
 from flask_qrcode import QRcode
 import os
 import sys
@@ -26,6 +27,10 @@ qrcode = QRcode(app)
 @app.route('/')
 def index():
     return render_template('index.html')
+    
+@app.route('/statics/<path:path>')
+def send_report(path):
+    return send_from_directory('statics', path)
 
 @app.route("/qrcode", methods=["GET"])
 def get_qrcode():
