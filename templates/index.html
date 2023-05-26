@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Blockstream Jade Pinserver</title>
+    <title>Blockstream Blind Oracle</title>
     <link rel="stylesheet" href="./statics/chx2fbn.css">
     <link rel="stylesheet" href="./statics/styleguide.min.css">
     <link rel="stylesheet" href="./statics/main.css">
     <link rel="icon" href="./statics/favicon.jpeg">
   </head>
+
   <body>
     <header>
       <a class="logo" href="https://blockstream.com/jade/">
@@ -19,19 +21,27 @@
     <main>
       <div class="container">
         <h1 class="title" id="title">
-          Personal Pinserver
+          Personal Blind Oracle
           <span class="wrn-msg"></span>
         </h1>
         <table>
           <tr>
-            <td style="word-break: break-all; width:30%">URL: {{url}}:{{port}} <br/><br/>Public key: {{pubkey}}</td>
-            <td><img src="qrcode" style="background:#FFF; padding:40px;"></td>
-            <td></td>
+            <td>
+              <center><img src="qrcode" style="background:#FFF; padding:40px;"></center>
+            </td>
+          </tr>
+          <tr>
+            <td style="word-break: break-all">URL: {{url}}:{{port}} <br />Public key: {{pubkey}}</td>
+          </tr>
+          <tr>
+            <td>
+              <center><a class="g-btn green-btn" href="https://help.blockstream.com/hc/en-us/articles/18904765931161">Learn More</a></center>
+            </td>
           </tr>
         </table>
-       
         <img class="jade-img" src="./statics/jade.svg" alt="Jade">
       </div>
     </main>
   </body>
+
 </html>
