@@ -22,7 +22,14 @@
           Personal Pinserver
           <span class="wrn-msg"></span>
         </h1>
-        <img src="qrcode" style="background:#FFF; padding:10px;">
+        <table>
+          <tr>
+            <td style="word-break: break-all; width:30%">URL: {{url}}:{{port}} <br/><br/>Public key: {{pubkey}}</td>
+            <td><img src="qrcode" style="background:#FFF; padding:40px;"></td>
+            <td></td>
+          </tr>
+        </table>
+       
         <img class="jade-img" src="./statics/jade.svg" alt="Jade">
       </div>
     </main>

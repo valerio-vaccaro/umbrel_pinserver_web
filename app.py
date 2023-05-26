@@ -16,17 +16,20 @@ from ur import ur_encoder
 PINSERVER_URL = os.getenv('PINSERVER_URL')
 PINSERVER_PORT = os.getenv('PINSERVER_PORT')
 
-# check if key exists
+# check if key exists (/server_private_key.key)
+if not os.path.isfile("/server_private_key.key"):
+    # generate new key
+    os.system("python generate.py")
 
 # if exist retrieve content
-
+PINSERVER_PUBKEY='02d938270777210a18cc77558e4390a7376884c56580bcb87ee3ce0e44691da52f'
 
 app = Flask(__name__)
 qrcode = QRcode(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY)
     
 @app.route('/statics/<path:path>')
 def send_report(path):
@@ -39,7 +42,7 @@ def get_qrcode():
         'id': '001',
         'params': {
             'urlA': f'{PINSERVER_URL}:{PINSERVER_PORT}',
-            'pubkey': bytes.fromhex('02d938270777210a18cc77558e4390a7376884c56580bcb87ee3ce0e44691da52f')
+            'pubkey': bytes.fromhex(PINSERVER_PUBKEY)
         }
     })
     payload = ur.UR('jade-updps', data)
