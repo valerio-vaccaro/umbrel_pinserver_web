@@ -11,18 +11,25 @@ import sys
 from ur import ur
 from ur import ur_encoder
 
+from blind_pin_server.server import PINServerECDH
 
 # get info from env variables
 PINSERVER_URL = os.getenv('PINSERVER_URL')
 PINSERVER_PORT = os.getenv('PINSERVER_PORT')
 
-# check if key exists (/server_private_key.key)
-if not os.path.isfile("/server_private_key.key"):
-    # generate new key
-    os.system("python generate.py")
+# check keys
+with open(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
+    PINSERVER_PUBKEY = f.read().hex()
 
-# if exist retrieve content
-PINSERVER_PUBKEY='02d938270777210a18cc77558e4390a7376884c56580bcb87ee3ce0e44691da52f'
+if PINSERVER_PUBKEY == '0332b360a51923db6506cb3560a7216fe00ba15138f97283219cb12cc956f119df':
+    print('Generating new keys')
+    os.remove(PINServerECDH.STATIC_SERVER_PRIVATE_KEY_FILE)
+    os.remove(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE)
+    PINServerECDH.generate_server_key_pair()
+
+with open(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
+    PINSERVER_PUBKEY = f.read().hex()
+print(f'PINSERVER_PUBKEY {PINSERVER_PUBKEY}')
 
 app = Flask(__name__)
 qrcode = QRcode(app)
