@@ -29,7 +29,10 @@ qrcode = QRcode(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY)
+    if PINSERVER_PORT==None:
+        return render_template('error.html')
+    else:
+        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY)
     
 @app.route('/statics/<path:path>')
 def send_report(path):
