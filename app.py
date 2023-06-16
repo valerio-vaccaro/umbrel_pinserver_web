@@ -18,13 +18,13 @@ PINSERVER_URL = os.getenv('PINSERVER_URL')
 PINSERVER_PORT = os.getenv('PINSERVER_PORT')
 
 # check keys
-with open(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
+with open('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
     PINSERVER_PUBKEY = f.read().hex()
 
 if PINSERVER_PUBKEY == '0332b360a51923db6506cb3560a7216fe00ba15138f97283219cb12cc956f119df':
     print('Generating new keys')
-    os.remove(PINServerECDH.STATIC_SERVER_PRIVATE_KEY_FILE)
-    os.remove(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE)
+    os.remove('/app/'+PINServerECDH.STATIC_SERVER_PRIVATE_KEY_FILE)
+    os.remove('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE)
     PINServerECDH.generate_server_key_pair()
 
 with open(PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
