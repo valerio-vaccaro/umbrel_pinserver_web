@@ -62,8 +62,13 @@ def index():
     if PINSERVER_PORT==None:
         return render_template('error.html')
     else:
-        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY)
-    
+        keysno = len(os.listdir('/app/pins'))
+        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY, keysno=keysno)
+
+@app.route('/server_public_key.pub')
+def send_report():
+    return send_from_directory('', 'server_public_key.pub')
+
 @app.route('/statics/<path:path>')
 def send_report(path):
     return send_from_directory('statics', path)
