@@ -66,7 +66,7 @@ def index():
         return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY, keysno=keysno)
 
 @app.route('/server_public_key.pub')
-def send_report():
+def send_key():
     return send_from_directory('', 'server_public_key.pub')
 
 @app.route('/statics/<path:path>')
