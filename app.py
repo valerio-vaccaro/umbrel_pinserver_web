@@ -42,19 +42,6 @@ print(f'PINSERVER_PUBKEY {PINSERVER_PUBKEY}')
 app = Flask(__name__)
 qrcode = QRcode(app)
 
-@app.route('/update')
-def update():
-    private_key, public_key = PINServerECDH.generate_ec_key_pair()
-
-    with open('/app/'+PINServerECDH.STATIC_SERVER_PRIVATE_KEY_FILE, 'wb') as f:
-        f.write(private_key)
-
-    with open('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'wb') as f:
-        f.write(public_key)
-
-    print(f'New private key written to file {PINServerECDH.STATIC_SERVER_PRIVATE_KEY_FILE}')
-    print(f'New public key written to file {PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE}')
-
 @app.route('/')
 def index():
     if PINSERVER_PORT==None:
