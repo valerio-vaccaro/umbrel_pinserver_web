@@ -47,7 +47,7 @@ qrcode = QRcode(app)
 
 @app.route('/')
 def index():
-    if PINSERVER_PORT == None:
+    if PINSERVER_URL == 'notyetset.onion':
         return render_template('error.html')
     else:
         keysno = len(os.listdir('/app/pins'))
