@@ -13,9 +13,13 @@ from ur import ur_encoder
 
 from blind_pin_server.server import PINServerECDH
 
-# get info from env variables
+# get info from env variables - tor
 PINSERVER_URL = os.getenv('PINSERVER_URL')
 PINSERVER_PORT = os.getenv('PINSERVER_PORT')
+
+# get info from env variables - tailscale
+PINSERVER_URL_B = os.getenv('PINSERVER_URL_B')
+PINSERVER_PORT_B = os.getenv('PINSERVER_PORT_B')
 
 # check keys
 with open('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
@@ -51,7 +55,7 @@ def index():
         return render_template('error.html')
     else:
         keysno = len(os.listdir('/app/pins'))
-        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY, keysno=keysno)
+        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, urlb=PINSERVER_URL_B, portb=PINSERVER_PORT_B, pubkey=PINSERVER_PUBKEY, keysno=keysno)
 
 
 @app.route('/server_public_key.pub')
@@ -71,6 +75,7 @@ def get_qrcode():
         'id': '001',
         'params': {
             'urlA': f'{PINSERVER_URL}:{PINSERVER_PORT}',
+            'urlB': f'{PINSERVER_URL_B}:{PINSERVER_PORT_B}',
             'pubkey': bytes.fromhex(PINSERVER_PUBKEY)
         }
     })
