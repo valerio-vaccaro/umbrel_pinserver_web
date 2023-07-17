@@ -52,6 +52,11 @@ qrcode = QRcode(app)
 
 @app.route('/')
 def index():
+    global PINSERVER_URL
+    global PINSERVER_PORT
+    global PINSERVER_URL_B
+    global PINSERVER_PORT_B
+    
     urla = request.args.get('urla')
     if urla is not None:
         PINSERVER_URL = urla
