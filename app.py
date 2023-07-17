@@ -58,23 +58,23 @@ def index():
     global PINSERVER_PORT_B
     
     urla = request.args.get('urla')
-    if urla is not None:
-        PINSERVER_URL = urla
+    if urla is None:
+        urla = PINSERVER_URL
     porta = request.args.get('porta')
-    if porta is not None:
-        PINSERVER_PORT = porta
+    if porta is None:
+        porta = PINSERVER_PORT
     urlb = request.args.get('urlb')
-    if urlb is not None:
-        PINSERVER_URL_B = urlb
+    if urlb is None:
+        urlb = PINSERVER_URL_B
     portb = request.args.get('portb')
-    if portb is not None:
-        PINSERVER_PORT_B = portb
+    if portb is None:
+        portb = PINSERVER_PORT_B
 
     if PINSERVER_URL == 'notyetset.onion':
         return render_template('error.html')
     else:
         keysno = len(os.listdir('/app/pins'))
-        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, urlb=PINSERVER_URL_B, portb=PINSERVER_PORT_B, pubkey=PINSERVER_PUBKEY, keysno=keysno)
+        return render_template('index.html', url=urla, port=porta, urlb=urlb, portb=portb, pubkey=PINSERVER_PUBKEY, keysno=keysno)
 
 
 @app.route('/server_public_key.pub')
