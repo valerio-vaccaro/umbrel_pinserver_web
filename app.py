@@ -2,6 +2,7 @@
 
 import cbor
 from flask import Flask
+from flask import request
 from flask import render_template
 from flask import send_file
 from flask import send_from_directory
@@ -51,6 +52,19 @@ qrcode = QRcode(app)
 
 @app.route('/')
 def index():
+    urla = request.args.get('urla')
+    if urla is not None:
+        PINSERVER_URL = urla
+    porta = request.args.get('porta')
+    if porta is not None:
+        PINSERVER_PORT = porta
+    urlb = request.args.get('urlb')
+    if urlb is not None:
+        PINSERVER_URL_B = urlb
+    portb = request.args.get('portb')
+    if portb is not None:
+        PINSERVER_PORT_B = portb
+
     if PINSERVER_URL == 'notyetset.onion':
         return render_template('error.html')
     else:
