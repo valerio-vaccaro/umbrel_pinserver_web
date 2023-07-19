@@ -89,12 +89,30 @@ def send_report(path):
 
 @app.route("/qrcode", methods=["GET"])
 def get_qrcode():
+    global PINSERVER_URL
+    global PINSERVER_PORT
+    global PINSERVER_URL_B
+    global PINSERVER_PORT_B
+    
+    urla = request.args.get('urla')
+    if urla is None:
+        urla = PINSERVER_URL
+    porta = request.args.get('porta')
+    if porta is None:
+        porta = PINSERVER_PORT
+    urlb = request.args.get('urlb')
+    if urlb is None:
+        urlb = PINSERVER_URL_B
+    portb = request.args.get('portb')
+    if portb is None:
+        portb = PINSERVER_PORT_B
+
     data = cbor.dumps({
         'method': 'update_pinserver',
         'id': '001',
         'params': {
-            'urlA': f'{PINSERVER_URL}:{PINSERVER_PORT}',
-            'urlB': f'{PINSERVER_URL_B}:{PINSERVER_PORT_B}',
+            'urlA': f'{urla}:{porta}',
+            'urlB': f'{urlb}:{portb}',
             'pubkey': bytes.fromhex(PINSERVER_PUBKEY)
         }
     })
