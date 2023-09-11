@@ -2,6 +2,7 @@
 
 import cbor
 from flask import Flask
+from flask import request
 from flask import render_template
 from flask import send_file
 from flask import send_from_directory
@@ -14,8 +15,10 @@ from ur import ur_encoder
 from blind_pin_server.server import PINServerECDH
 
 # get info from env variables
-PINSERVER_URL = os.getenv('PINSERVER_URL')
-PINSERVER_PORT = os.getenv('PINSERVER_PORT')
+PINSERVER_URL_A = os.getenv('PINSERVER_URL_A')
+PINSERVER_PORT_A = os.getenv('PINSERVER_PORT_A')
+PINSERVER_URL_B = os.getenv('PINSERVER_URL_B')
+PINSERVER_PORT_B = os.getenv('PINSERVER_PORT_B')
 
 # check keys
 with open('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
@@ -47,11 +50,29 @@ qrcode = QRcode(app)
 
 @app.route('/')
 def index():
-    if PINSERVER_URL == 'notyetset.onion':
+    global PINSERVER_URL_A
+    global PINSERVER_PORT_A
+    global PINSERVER_URL_B
+    global PINSERVER_PORT_B
+    
+    urla = request.args.get('urla')
+    if urla is None:
+        urla = PINSERVER_URL_A
+    porta = request.args.get('porta')
+    if porta is None:
+        porta = PINSERVER_PORT_A
+    urlb = request.args.get('urlb')
+    if urlb is None:
+        urlb = PINSERVER_URL_B
+    portb = request.args.get('portb')
+    if portb is None:
+        portb = PINSERVER_PORT_B
+
+    if PINSERVER_URL_A == 'notyetset.onion':
         return render_template('error.html')
     else:
         keysno = len(os.listdir('/app/pins'))
-        return render_template('index.html', url=PINSERVER_URL, port=PINSERVER_PORT, pubkey=PINSERVER_PUBKEY, keysno=keysno)
+        return render_template('index.html', urla=urla, porta=porta, urlb=urlb, portb=portb, pubkey=PINSERVER_PUBKEY, keysno=keysno)
 
 
 @app.route('/server_public_key.pub')
@@ -65,12 +86,31 @@ def send_report(path):
 
 
 @app.route("/qrcode", methods=["GET"])
-def get_qrcode():
+def get_qrcode():    
+    global PINSERVER_URL_A
+    global PINSERVER_PORT_A
+    global PINSERVER_URL_B
+    global PINSERVER_PORT_B
+    
+    urla = request.args.get('urla')
+    if urla is None:
+        urla = PINSERVER_URL_A
+    porta = request.args.get('porta')
+    if porta is None:
+        porta = PINSERVER_PORT_A
+    urlb = request.args.get('urlb')
+    if urlb is None:
+        urlb = PINSERVER_URL_B
+    portb = request.args.get('portb')
+    if portb is None:
+        portb = PINSERVER_PORT_B
+
     data = cbor.dumps({
         'method': 'update_pinserver',
         'id': '001',
         'params': {
-            'urlA': f'{PINSERVER_URL}:{PINSERVER_PORT}',
+            'urlA': f'{urla}:{porta}',
+            'urlB': f'{urlb}:{portb}',
             'pubkey': bytes.fromhex(PINSERVER_PUBKEY)
         }
     })
