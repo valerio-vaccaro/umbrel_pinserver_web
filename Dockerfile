@@ -8,5 +8,5 @@ RUN git submodule update --init
 RUN pip install -r requirements.txt
 RUN pip install -r blind_pin_server/requirements.txt
 
-EXPOSE 8081
+EXPOSE 8095
 CMD ["python", "app.py"]
