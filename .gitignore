@@ -1,5 +1,4 @@
 *.pyc
 venv
-blind_pin_server
 server_private_key.key
 server_public_key.pub
