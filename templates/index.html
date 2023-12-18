@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-  <head>
+<html lang="en"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,35 +12,120 @@
   <body>
     <header>
       <a class="logo" href="https://blockstream.com/jade/">
-        <img src="./statics/logo.svg" alt="Jade" class="logo-img">
+        <img src="./statics/jade-logo.svg" alt="Jade" class="logo-img">
+        <span class="logo-text">
+            <i class="logo-text_title">Jade Blind Oracle</i>
+            <i class="logo-text_subtitle">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="5" cy="5" r="5" fill="#33DB95"/>
+                </svg>
+                 Your Personal Blind Oracle
+            </i>
+        </span>
       </a>
     </header>
     <main>
       <div class="container">
-        <br />
-        <br />
+        <div>
+            <svg width="45" height="45" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M39.375 31.166V13.834C39.3737 13.5836 39.3063 13.338 39.1798 13.122C39.0533 12.906 38.872 12.7271 38.6543 12.6035L23.1855 3.90232C22.9771 3.78198 22.7407 3.71863 22.5 3.71863C22.2593 3.71863 22.0229 3.78198 21.8145 3.90232L6.3457 12.6035C6.128 12.7271 5.94674 12.906 5.82021 13.122C5.69368 13.338 5.62634 13.5836 5.625 13.834V31.166C5.62634 31.4163 5.69368 31.6619 5.82021 31.878C5.94674 32.094 6.128 32.2728 6.3457 32.3965L21.8145 41.0976C22.0229 41.218 22.2593 41.2813 22.5 41.2813C22.7407 41.2813 22.9771 41.218 23.1855 41.0976L38.6543 32.3965C38.872 32.2728 39.0533 32.094 39.1798 31.878C39.3063 31.6619 39.3737 31.4163 39.375 31.166V31.166Z" stroke="#00B45A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M39.1816 13.1133L22.6582 22.5L5.81836 13.1133" stroke="#00B45A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22.6582 22.5L22.5 41.2734" stroke="#00B45A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg> 
+        </div> 
         <h1 class="title" id="title">Personal Blind Oracle</h1>
-        <br />
-        <table>
-          <tr><td></td></tr>
-          <tr>
-            <td>
-              <div style="display: flex; justify-content: center; align-items: center"><img src="qrcode?urla=http://{{urla}}&porta={{porta}}&urlb=http://{{urlb}}&portb={{portb}}" alt="qrcode" style="background:#FFF; padding:40px;"></div>
-            </td>
-          </tr>
-          <tr><td></td></tr>
-          <tr>
-            <td style="text-align: center; word-break: break-all"><b>URL:</b>http://{{urla}}:{{porta}}<br /><b>URL:</b>http://{{urlb}}:{{portb}}<br /><b>Public key:</b> <a href="server_public_key.pub" style="color: #FFF">{{pubkey}}</a> <br /><b>Managed pins:</b> {{keysno}}</td>
-          </tr>
-          <tr>
-            <td>
-              <div style="display: flex; justify-content: center; align-items: center"><a style="text-align: center" class="g-btn green-btn" href="https://help.blockstream.com/hc/en-us/articles/18904765931161">Setup Guide</a></div>
-            </td>
-          </tr>
-        </table>
-        <img class="jade-img" src="./statics/jade.svg" alt="Jade">
+        <h3 class="subtitle">Setup a personal blind oracle with Umbrel and protect your Jade from physical attacks</h3>
+        <div class="qrcode">
+            <img src="qrcode?urla=http://{{urla}}&porta={{porta}}&urlb=http://{{urlb}}&portb={{portb}}" alt="qrcode" />
+        </div>
+        <div class="info">
+            <div class="info-row">
+                <div>URL:</div>
+                <div data-original="http://{{urla}}:{{porta}}" class="truncate">http://{{urla}}:{{porta}}</div>
+                <button class="copy-button">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.5625 2.92188H7.5625C7.42575 2.92188 7.2946 2.9762 7.1979 3.0729C7.1012 3.1696 7.04688 3.30075 7.04688 3.4375V7.04688H3.4375C3.30075 7.04688 3.1696 7.1012 3.0729 7.1979C2.9762 7.2946 2.92188 7.42575 2.92188 7.5625V18.5625C2.92188 18.6993 2.9762 18.8304 3.0729 18.9271C3.1696 19.0238 3.30075 19.0781 3.4375 19.0781H14.4375C14.5743 19.0781 14.7054 19.0238 14.8021 18.9271C14.8988 18.8304 14.9531 18.6993 14.9531 18.5625V14.9531H18.5625C18.6993 14.9531 18.8304 14.8988 18.9271 14.8021C19.0238 14.7054 19.0781 14.5743 19.0781 14.4375V3.4375C19.0781 3.30075 19.0238 3.1696 18.9271 3.0729C18.8304 2.9762 18.6993 2.92188 18.5625 2.92188ZM13.9219 18.0469H3.95312V8.07812H13.9219V18.0469ZM18.0469 13.9219H14.9531V7.5625C14.9531 7.42575 14.8988 7.2946 14.8021 7.1979C14.7054 7.1012 14.5743 7.04688 14.4375 7.04688H8.07812V3.95312H18.0469V13.9219Z" fill="white"/>
+                    </svg>                        
+                </button>
+            </div>
+            <div class="info-row">
+                <div>URL:</div>
+                <div data-original="http://{{urlb}}:{{portb}}">http://{{urlb}}:{{portb}}</div>
+                <button class="copy-button">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.5625 2.92188H7.5625C7.42575 2.92188 7.2946 2.9762 7.1979 3.0729C7.1012 3.1696 7.04688 3.30075 7.04688 3.4375V7.04688H3.4375C3.30075 7.04688 3.1696 7.1012 3.0729 7.1979C2.9762 7.2946 2.92188 7.42575 2.92188 7.5625V18.5625C2.92188 18.6993 2.9762 18.8304 3.0729 18.9271C3.1696 19.0238 3.30075 19.0781 3.4375 19.0781H14.4375C14.5743 19.0781 14.7054 19.0238 14.8021 18.9271C14.8988 18.8304 14.9531 18.6993 14.9531 18.5625V14.9531H18.5625C18.6993 14.9531 18.8304 14.8988 18.9271 14.8021C19.0238 14.7054 19.0781 14.5743 19.0781 14.4375V3.4375C19.0781 3.30075 19.0238 3.1696 18.9271 3.0729C18.8304 2.9762 18.6993 2.92188 18.5625 2.92188ZM13.9219 18.0469H3.95312V8.07812H13.9219V18.0469ZM18.0469 13.9219H14.9531V7.5625C14.9531 7.42575 14.8988 7.2946 14.8021 7.1979C14.7054 7.1012 14.5743 7.04688 14.4375 7.04688H8.07812V3.95312H18.0469V13.9219Z" fill="white"/>
+                    </svg>                        
+                </button>
+            </div>
+            <div class="info-row">
+                <div>Public key:</div>
+                <div data-original="{{pubkey}}"><a href="server_public_key.pub" class="truncate">{{pubkey}}</a></div>
+                <button class="copy-button">
+                    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.5625 2.92188H7.5625C7.42575 2.92188 7.2946 2.9762 7.1979 3.0729C7.1012 3.1696 7.04688 3.30075 7.04688 3.4375V7.04688H3.4375C3.30075 7.04688 3.1696 7.1012 3.0729 7.1979C2.9762 7.2946 2.92188 7.42575 2.92188 7.5625V18.5625C2.92188 18.6993 2.9762 18.8304 3.0729 18.9271C3.1696 19.0238 3.30075 19.0781 3.4375 19.0781H14.4375C14.5743 19.0781 14.7054 19.0238 14.8021 18.9271C14.8988 18.8304 14.9531 18.6993 14.9531 18.5625V14.9531H18.5625C18.6993 14.9531 18.8304 14.8988 18.9271 14.8021C19.0238 14.7054 19.0781 14.5743 19.0781 14.4375V3.4375C19.0781 3.30075 19.0238 3.1696 18.9271 3.0729C18.8304 2.9762 18.6993 2.92188 18.5625 2.92188ZM13.9219 18.0469H3.95312V8.07812H13.9219V18.0469ZM18.0469 13.9219H14.9531V7.5625C14.9531 7.42575 14.8988 7.2946 14.8021 7.1979C14.7054 7.1012 14.5743 7.04688 14.4375 7.04688H8.07812V3.95312H18.0469V13.9219Z" fill="white"/>
+                    </svg>                        
+                </button>
+            </div>
+            <div class="info-row">
+                <div>Managed pins:</div>
+                <div>{{keysno}}</div>
+            </div>
+        </div>
+        <div style="display: flex; justify-content: center; align-items: center; width: 100%;"><a style="text-align: center" class="g-btn green-btn" href="https://help.blockstream.com/hc/en-us/articles/18904765931161">Setup Guide</a></div>
+           
+    
       </div>
     </main>
-  </body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            function copyTextToClipboard(text) {
+                var textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('Copy');
+                textArea.remove();
+            }
 
+            document.querySelectorAll('.info .info-row .copy-button').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var textToCopy = this.previousElementSibling.getAttribute('data-original') || this.previousElementSibling.innerText;
+                    copyTextToClipboard(textToCopy);
+                });
+            });
+        });
+
+        function truncateMiddle(element, maxLength) {
+            const text = element.getAttribute('data-original') || element.innerText;
+            if (text.length <= maxLength) return text;
+
+            const start = text.substring(0, maxLength / 2);
+            const end = text.substring(text.length - maxLength / 2);
+            return `${start}...${end}`;
+        }
+
+        function applyTruncation() {
+            const maxWidth = 650;
+            const maxLength = 20;
+
+            document.querySelectorAll('.truncate').forEach(el => {
+            if (window.innerWidth <= maxWidth) {
+                el.innerText = truncateMiddle(el, maxLength);
+            } else {
+                const originalText = el.getAttribute('data-original');
+                if (originalText) el.innerText = originalText;
+            }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.truncate').forEach(el => {
+            el.setAttribute('data-original', el.innerText);
+            });
+            applyTruncation();
+        });
+
+        window.addEventListener('resize', applyTruncation);
+    </script>
+</body>
 </html>
