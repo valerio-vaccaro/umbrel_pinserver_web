@@ -1,12 +1,17 @@
-<svg width="85" height="85" viewBox="0 0 85 85" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="85" height="85" rx="20" fill="#1D2127"/>
-<mask id="mask0_5_9" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="16" y="44" width="26" height="26">
-<path d="M16 44.3796L41.0584 44.3796L41.0584 69.5175L16 69.5175L16 44.3796Z" fill="#06886F"/>
-</mask>
-<g mask="url(#mask0_5_9)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M41.0582 52.8882L37.3353 49.2642L36.7428 48.686L35.1816 47.0712L32.5775 44.3798L15.9994 44.3798L41.0582 69.5176L41.0582 52.8882Z" fill="#06886F"/>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 2000 2000" style="enable-background:new 0 0 2000 2000;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0A886F;}
+	.st1{fill:#00AF92;}
+	.st2{fill:#87CDC2;}
+	.st3{fill:#FFFFFF;}
+</style>
+<g>
+	<polygon class="st0" points="961.2,1241 756.9,1037.4 357.7,1037.4 961.2,1639.2 	"/>
+	<polygon class="st1" points="1036.3,1642.3 1639.9,1037.4 1241.4,1037.4 1036.3,1242.8 	"/>
+	<polygon class="st2" points="1036.3,358 1036.3,756.2 1243.1,962.3 1642.3,962.3 	"/>
+	<polygon class="st3" points="960.9,357.7 357.7,962.3 756.2,962.3 960.9,756.9 	"/>
 </g>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M44.1718 69.6465L69.2226 44.3799L52.6904 44.3799L49.0867 48.1256L48.5119 48.7216L46.9065 50.2928L44.1718 52.9691L44.1718 69.6465Z" fill="#00B093"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M44.1718 16.0099L44.1718 32.6411L47.9423 36.3095L48.534 36.8878L50.096 38.5034L52.7505 41.2481L69.3295 41.2481L44.1718 16.0099Z" fill="#A9DBD3"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M41.0348 16L16.0016 41.248L32.5364 41.248L36.1904 37.449L36.7653 36.8539L38.3715 35.2817L41.0348 32.6748L41.0348 16Z" fill="white"/>
 </svg>
