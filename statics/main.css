@@ -71,6 +71,12 @@ footer {
     margin-left: 30px;
 }
 
+@media screen and (max-width: 650px) {
+    .logo {
+        margin-left: 10px;
+    }
+}
+
 .logo-img {
     max-width: 150px;
     width: 100%;
@@ -646,4 +652,30 @@ input[type="radio"]:checked + label {
 
 .info button:hover {
     cursor: pointer;
+}
+
+.setup-btn-container {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 100%;
+}
+
+
+@media screen and (max-width: 650px) {
+    .setup-btn-container {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-bottom: 20px;
+        padding-bottom: env(safe-area-inset-bottom);
+        background: #101D1E;
+        
+    }
+
+    .setup-btn-container > a {
+       margin: 10px;
+    }
 }
