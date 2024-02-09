@@ -19,6 +19,7 @@ PINSERVER_URL_A = os.getenv('PINSERVER_URL_A')
 PINSERVER_PORT_A = os.getenv('PINSERVER_PORT_A')
 PINSERVER_URL_B = os.getenv('PINSERVER_URL_B')
 PINSERVER_PORT_B = os.getenv('PINSERVER_PORT_B')
+PINSERVER_CERT = os.getenv('PINSERVER_CERT')
 
 # check keys
 with open('/app/'+PINServerECDH.STATIC_SERVER_PUBLIC_KEY_FILE, 'rb') as f:
@@ -54,6 +55,7 @@ def index():
     global PINSERVER_PORT_A
     global PINSERVER_URL_B
     global PINSERVER_PORT_B
+    global PINSERVER_CERT
     
     urla = request.args.get('urla')
     if urla is None:
@@ -67,12 +69,15 @@ def index():
     portb = request.args.get('portb')
     if portb is None:
         portb = PINSERVER_PORT_B
+    cert = request.args.get('cert')
+    if cert is None:
+        cert = PINSERVER_CERT
 
     if PINSERVER_URL_A == 'notyetset.onion':
         return render_template('error.html')
     else:
         keysno = len(os.listdir('/app/pins'))
-        return render_template('index.html', urla=urla, porta=porta, urlb=urlb, portb=portb, pubkey=PINSERVER_PUBKEY, keysno=keysno)
+        return render_template('index.html', urla=urla, porta=porta, urlb=urlb, portb=portb, pubkey=PINSERVER_PUBKEY, cert=cert, keysno=keysno)
 
 
 @app.route('/server_public_key.pub')
@@ -91,6 +96,7 @@ def get_qrcode():
     global PINSERVER_PORT_A
     global PINSERVER_URL_B
     global PINSERVER_PORT_B
+    global PINSERVER_CERT
     
     urla = request.args.get('urla')
     if urla is None:
@@ -104,8 +110,11 @@ def get_qrcode():
     portb = request.args.get('portb')
     if portb is None:
         portb = PINSERVER_PORT_B
+    cert = request.args.get('cert')
+    if cert is None:
+        cert = PINSERVER_CERT
 
-    data = cbor.dumps({
+    payload = {
         'method': 'update_pinserver',
         'id': '001',
         'params': {
@@ -113,7 +122,12 @@ def get_qrcode():
             'urlB': f'{urlb}:{portb}',
             'pubkey': bytes.fromhex(PINSERVER_PUBKEY)
         }
-    })
+    }
+
+    if cert:
+        payload['params']['cert'] = bytes.fromhex(cert)
+
+    data = cbor.dumps(payload)
     payload = ur.UR('jade-updps', data)
     encoder = ur_encoder.UREncoder(payload, 1000)
     text = encoder.next_part().upper()
