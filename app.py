@@ -124,7 +124,7 @@ def get_qrcode():
         }
     }
 
-    if cert:
+    if len(cert) > 0:
         payload['params']['cert'] = bytes.fromhex(cert)
 
     data = cbor.dumps(payload)
